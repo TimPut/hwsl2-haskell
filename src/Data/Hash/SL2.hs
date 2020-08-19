@@ -65,6 +65,9 @@ instance Eq Hash where
 instance Ord Hash where
   compare a b = unsafePerformIO $ unsafeUseAsPtr2 a b Mutable.cmp
 
+instance Semigroup Hash where
+  (<>) = concat
+
 instance Monoid Hash where
   mempty = unit
   mappend = concat
